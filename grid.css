@@ -1,0 +1,16 @@
+.gridcontainer{
+background-color: brown;
+display: grid;
+display: flex;
+gap: 20px;
+flex-wrap: wrap;
+width: 100%;
+height: 100vh;
+grid-template-columns: 50%  30%;
+}
+.gridcol{
+    width: 33.3%;
+    border: 2px solid white;
+    border-radius: 20px;
+}
+    

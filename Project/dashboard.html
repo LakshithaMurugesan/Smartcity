@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live City Dashboard | SmartCity Hub</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* DASHBOARD-SPECIFIC OVERRIDES & UTILITIES */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .panel {
+            background: var(--white);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: var(--card-shadow);
+            border: 1px solid #e2e8f0;
+        }
+
+        .panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #f1f5f9;
+            padding-bottom: 10px;
+        }
+
+        .panel-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--dark-bg);
+        }
+
+        .status-pill {
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .status-good { background: #dcfce7; color: #166534; }
+        .status-warn { background: #fef9c3; color: #854d0e; }
+        .status-crit { background: #fee2e2; color: #991b1b; }
+
+        /* Fake Chart Graphics via CSS */
+        .chart-placeholder {
+            height: 180px;
+            display: flex;
+            align-items: flex-end;
+            gap: 15px;
+            padding: 10px 0;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .chart-bar {
+            flex: 1;
+            background: var(--primary-color);
+            border-radius: 4px 4px 0 0;
+            position: relative;
+            min-height: 10px;
+        }
+
+        .chart-bar::after {
+            content: attr(data-label);
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        /* Data Tables */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.9rem;
+        }
+
+        .data-table th {
+            background: var(--light-bg);
+            padding: 12px;
+            color: var(--text-main);
+            font-weight: 600;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .data-table td {
+            padding: 12px;
+            border-bottom: 1px solid #e2e8f0;
+            color: var(--text-muted);
+        }
+
+        @media (max-width: 1024px) {
+            .dashboard-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 640px) {
+            .dashboard-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body style="background-color: var(--light-bg);">
+
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo"><i class="fas fa-city"></i> SmartCity Hub</div>
+                <ul class="nav-links">
+                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="./solution.html">Solutions</a></li>
+                    <li><a href="./dashboard.html" style="color: var(--secondary-color); font-weight: 700;">Dashboard</a></li>
+                    <li><a href="services">Citizen Services</a></li>
+                    <li><a href="projects">Projects</a></li>
+                    <li><a href="login" class="btn-login">Admin Login</a></li>
+                </ul>
+            </nav>
+        </div>
+            <header>
+        <div class="container">
+            <nav>
+                <div class="logo"><i class="fas fa-city"></i> SmartCity Hub</div>
+                <ul class="nav-links">
+                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="./solution.html">Solutions</a></li>
+                    <li><a href="./dashboard.html">Dashboard</a></li>
+                    <li><a href="./citizen services.html">Citizen Services</a></li>
+                    <li><a href="./Projects.html">Projects</a></li>
+                    <li><a href="./adminlogin.html" class="btn-login">Admin Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    </header>
+
+    <section style="padding: 40px 0 20px 0;">
+        <div class="container">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+                <div>
+                    <h1 style="font-size: 2rem; color: var(--dark-bg);">Command & Control Center</h1>
+                    <p style="color: var(--text-muted);">Live telemetry telemetry stream across municipal operational zones.</p>
+                </div>
+                <div style="background: var(--white); padding: 10px 20px; border-radius: 6px; box-shadow: var(--card-shadow); border: 1px solid #e2e8f0;">
+                    <span style="color: #166534; font-weight: 600;"><i class="fas fa-circle-check"></i> All Core Systems Nominal</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="padding: 20px 0 60px 0;">
+        <div class="container">
+            
+            <div class="dashboard-grid">
+                <div class="panel">
+                    <div style="color: var(--text-muted); font-size: 0.85rem; font-weight: 600; text-transform: uppercase;">Average Air Quality Index</div>
+                    <div style="font-size: 2rem; font-weight: 700; color: #166534; margin: 5px 0;">64 AQI</div>
+                    <span class="status-pill status-good">Good / Satisfactory</span>
+                </div>
+                <div class="panel">
+                    <div style="color: var(--text-muted); font-size: 0.85rem; font-weight: 600; text-transform: uppercase;">Active Grid Load Matching</div>
+                    <div style="font-size: 2rem; font-weight: 700; color: var(--primary-color); margin: 5px 0;">87.4 MW</div>
+                    <span class="status-pill status-good"><i class="fas fa-bolt"></i> 14% Solar Share</span>
+                </div>
+                <div class="panel">
+                    <div style="color: var(--text-muted); font-size: 0.85rem; font-weight: 600; text-transform: uppercase;">Traffic Congestion Maps</div>
+                    <div style="font-size: 2rem; font-weight: 700; color: #854d0e; margin: 5px 0;">Moderate</div>
+                    <span class="status-pill status-warn">Bottleneck: Peelamedu Junction</span>
+                </div>
+                <div class="panel">
+                    <div style="color: var(--text-muted); font-size: 0.85rem; font-weight: 600; text-transform: uppercase;">Water Distribution Loss</div>
+                    <div style="font-size: 2rem; font-weight: 700; color: #991b1b; margin: 5px 0;">4.2 %</div>
+                    <span class="status-pill status-crit"><i class="fas fa-droplet-slash"></i> Leak Alert Zone 3</span>
+                </div>
+            </div>
+
+            <div class="dashboard-grid" style="grid-template-columns: repeat(3, 1fr);">
+                
+                <div class="panel" style="grid-column: span 2;">
+                    <div class="panel-header">
+                        <div class="panel-title"><i class="fas fa-chart-simple" style="color: var(--primary-color);"></i> Municipal Energy Consumption Hourly (MW)</div>
+                        <span style="font-size: 0.85rem; color: var(--text-muted);">Live Tracking</span>
+                    </div>
+                    <div class="chart-placeholder">
+                        <div class="chart-bar" style="height: 40%;" data-label="09:00"></div>
+                        <div class="chart-bar" style="height: 65%;" data-label="10:00"></div>
+                        <div class="chart-bar" style="height: 85%; background-color: var(--secondary-color);" data-label="11:00"></div>
+                        <div class="chart-bar" style="height: 95%; background-color: var(--secondary-color);" data-label="12:00"></div>
+                        <div class="chart-bar" style="height: 70%;" data-label="13:00"></div>
+                        <div class="chart-bar" style="height: 55%;" data-label="14:00"></div>
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <div class="panel-header">
+                        <div class="panel-title"><i class="fas fa-bell" style="color: #991b1b;"></i> Critical Network Alerts</div>
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 12px; height: 180px; overflow-y: auto;">
+                        <div style="border-left: 3px solid #991b1b; padding-left: 10px; font-size: 0.85rem;">
+                            <strong>14:22</strong> - Transformer Overheat sensor trigger: Zone 4 Substation.
+                        </div>
+                        <div style="border-left: 3px solid #854d0e; padding-left: 10px; font-size: 0.85rem;">
+                            <strong>13:05</strong> - High Volumetric Capacity alert: Smart Bin ID-804.
+                        </div>
+                        <div style="border-left: 3px solid #166534; padding-left: 10px; font-size: 0.85rem;">
+                            <strong>11:40</strong> - Maintenance Cleared: Solar Node Line 2.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="panel" style="margin-top: 20px;">
+                <div class="panel-header">
+                    <div class="panel-title"><i class="fas fa-list-check" style="color: var(--secondary-color);"></i> Active Field Infrastructure Maintenance Logs</div>
+                </div>
+                <div style="overflow-x: auto;">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Asset Tracking Unit ID</th>
+                                <th>Infrastructure Stream</th>
+                                <th>Assigned Action Team</th>
+                                <th>Dispatched Time</th>
+                                <th>System Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#WTR-CBE-042</td>
+                                <td>Acoustic Leak telemetry Map</td>
+                                <td>Hydrology Squad 3</td>
+                                <td>14:02 PM</td>
+                                <td><span class="status-pill status-crit">En Route</span></td>
+                            </tr>
+                            <tr>
+                                <td>#LGT-CBE-901</td>
+                                <td>Smart Street Grid Node</td>
+                                <td>Electric Team B</td>
+                                <td>11:15 AM</td>
+                                <td><span class="status-pill status-warn">In Progress</span></td>
+                            </tr>
+                            <tr>
+                                <td>#TRF-CBE-115</td>
+                                <td>Signal Computer Vision Node</td>
+                                <td>Automated Sync Patch</td>
+                                <td>08:30 AM</td>
+                                <td><span class="status-pill status-good">Resolved</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h4><i class="fas fa-city"></i> SmartCity Hub</h4>
+                    <p>SmartCity Hub is an end-to-end smart city management platform enabling data-driven governance. ISO 27001 certified.</p>
+                </div>
+                <div>
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="./solution.html">Solutions</a></li>
+                        <li><a href="./dashboard.html">Live Dashboard</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>For Stakeholders</h4>
+                    <ul>
+                        <li><a href="#">For Government</a></li>
+                        <li><a href="#">API Documentation</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Head Office</h4>
+                    <p><i class="fas fa-location-dot"></i> Tech Park, Peelamedu, Coimbatore</p>
+                    <p><i class="fas fa-headset"></i> Helpline: 1913 Toll-Free</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2026 SmartCity Hub. An Initiative by Ministry of Housing & Urban Affairs.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

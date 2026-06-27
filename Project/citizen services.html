@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Citizen Services Portal | SmartCity Hub</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* CITIZEN SERVICES SPECIFIC STYLES */
+        .search-wrapper {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--card-shadow);
+            max-width: 700px;
+            margin: -50px auto 40px auto;
+            position: relative;
+            z-index: 10;
+            display: flex;
+            gap: 15px;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 15px 20px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            font-size: 1rem;
+            outline: none;
+            transition: var(--transition-fast);
+        }
+
+        .search-input:focus {
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 3px rgba(0, 180, 216, 0.15);
+        }
+
+        .filter-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            background: #ffffff;
+            padding: 10px 24px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border: 1px solid #e2e8f0;
+            cursor: pointer;
+            transition: var(--transition-fast);
+            color: var(--text-muted);
+        }
+
+        .tab-btn.active, .tab-btn:hover {
+            background: var(--primary-color);
+            color: var(--white);
+            border-color: var(--primary-color);
+        }
+
+        .action-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            font-size: 0.9rem;
+        }
+
+        .action-link:hover {
+            color: var(--secondary-color);
+            gap: 12px;
+        }
+
+        .portal-split {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .quick-status-card {
+            background: #ffffff;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid #e2e8f0;
+            box-shadow: var(--card-shadow);
+        }
+
+        .indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 8px;
+        }
+
+        .ind-online { background-color: #22c55e; }
+        .ind-delay { background-color: #eab308; }
+
+        @media (max-width: 992px) {
+            .portal-split { grid-template-columns: 1fr; }
+            .search-wrapper { flex-direction: column; margin-top: -30px; }
+        }
+    </style>
+</head>
+<body style="background-color: var(--light-bg);">
+
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo"><i class="fas fa-city"></i> SmartCity Hub</div>
+                <ul class="nav-links">
+                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="./solution.html">Solutions</a></li>
+                    <li><a href="./dashboard.html">Dashboard</a></li>
+                    <li><a href="./services.html" style="color: var(--secondary-color); font-weight: 700;">Citizen Services</a></li>
+                    <li><a href="projects">Projects</a></li>
+                    <li><a href="login" class="btn-login">Admin Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero solutions-hero" style="padding: 80px 0 !important;">
+        <div class="container">
+            <h1>Digital Citizen Gateway</h1>
+            <p>Access municipal applications, real-time utility workflows, and direct governance channels instantly.</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="search-wrapper">
+            <input type="text" class="search-input" placeholder="Search services (e.g., 'Property tax', 'Water connection', 'Permits')...">
+            <button class="btn-primary" style="padding: 0 30px;"><i class="fas fa-magnifying-glass"></i> Search</button>
+        </div>
+    </div>
+
+    <section style="padding: 20px 0 80px 0;">
+        <div class="container">
+            
+            <div class="filter-tabs">
+                <button class="tab-btn active">All Services</button>
+                <button class="tab-btn">Utilities & Payments</button>
+                <button class="tab-btn">Civil Registry</button>
+                <button class="tab-btn">Grievances</button>
+                <button class="tab-btn">Urban Licenses</button>
+            </div>
+
+            <div class="portal-split">
+                
+                <div>
+                    <div class="services-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+                        
+                        <div class="service-item" style="flex-direction: column; align-items: flex-start;">
+                            <i class="fas fa-file-invoice-dollar"></i>
+                            <div style="margin-top: 15px;">
+                                <h4>Unified Property Tax Desk</h4>
+                                <p>Assess your current holdings status, access historical tax statements, and pay municipal dues via safe clearing channels.</p>
+                                <a href="#" class="action-link">Access Desk <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="service-item" style="flex-direction: column; align-items: flex-start;">
+                            <i class="fas fa-faucet-drip"></i>
+                            <div style="margin-top: 15px;">
+                                <h4>Water & Sewage Infrastructure</h4>
+                                <p>Request industrial or home pipeline deployments, log localized metering inconsistencies, and clear water statements.</p>
+                                <a href="#" class="action-link">Manage Connection <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="service-item" style="flex-direction: column; align-items: flex-start;">
+                            <i class="fas fa-id-card"></i>
+                            <div style="margin-top: 15px;">
+                                <h4>Civil Registry Infrastructure</h4>
+                                <p>Secure digital authenticated copies of verified vital records, including registration data matrices.</p>
+                                <a href="#" class="action-link">Request Copies <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="service-item" style="flex-direction: column; align-items: flex-start;">
+                            <i class="fas fa-trowel-bricks"></i>
+                            <div style="margin-top: 15px;">
+                                <h4>Zoning & Construction Permits</h4>
+                                <p>File technical structural maps, verify zoning boundaries data, and review active commercial construction authorization states.</p>
+                                <a href="#" class="action-link">File Application <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="service-item" style="flex-direction: column; align-items: flex-start;">
+                            <i class="fas fa-triangle-exclamation"></i>
+                            <div style="margin-top: 15px;">
+                                <h4>Geo-Tagged Grievance Center</h4>
+                                <p>Log dynamic local system reports detailing functional breakdowns (e.g., street light failures, sanitation issues).</p>
+                                <a href="#" class="action-link">Report Outage <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="service-item" style="flex-direction: column; align-items: flex-start;">
+                            <i class="fas fa-store"></i>
+                            <div style="margin-top: 15px;">
+                                <h4>Commercial Trade Licensing</h4>
+                                <p>File application forms for commercial permits, execute annual operational renewals, and verify local zoning guidelines.</p>
+                                <a href="#" class="action-link">Apply Online <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div>
+                    <div class="quick-status-card" style="border-top: 4px solid var(--primary-color);">
+                        <h4 style="color: var(--dark-bg); margin-bottom: 15px;"><i class="fas fa-magnifying-glass-chart"></i> Track Active Filing</h4>
+                        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 15px;">Provide your unique 12-digit ticket parameter reference identifier code below:</p>
+                        <input type="text" placeholder="e.g., CBE-GRV-2026-9041" style="width: 100%; padding: 10px; border: 1px solid #e2e8f0; border-radius: 4px; margin-bottom: 10px; font-family: monospace;">
+                        <button class="btn-primary" style="width: 100%; padding: 10px; font-size: 0.9rem;">Check Filing Status</button>
+                    </div>
+
+                    <div class="quick-status-card">
+                        <h4 style="color: var(--dark-bg); margin-bottom: 15px;"><i class="fas fa-server"></i> System Portal Telemetry</h4>
+                        <ul style="list-style: none; padding: 0; font-size: 0.9rem;">
+                            <li style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                                <span>Payment Infrastructure Desk</span>
+                                <span><span class="indicator ind-online"></span>Operational</span>
+                            </li>
+                            <li style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                                <span>Grievance Routing Node</span>
+                                <span><span class="indicator ind-online"></span>Operational</span>
+                            </li>
+                            <li style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                                <span>GIS Mapping Engine</span>
+                                <span><span class="indicator ind-delay"></span>High Load / Delay</span>
+                            </li>
+                            <li style="display: flex; justify-content: space-between;">
+                                <span>Permit Evaluation Modules</span>
+                                <span><span class="indicator ind-online"></span>Nominal</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h4><i class="fas fa-city"></i> SmartCity Hub</h4>
+                    <p>SmartCity Hub is an end-to-end smart city management platform enabling data-driven governance. ISO 27001 certified.</p>
+                </div>
+                <div>
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="./solution.html">Solutions</a></li>
+                        <li><a href="./dashboard.html">Live Dashboard</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>For Stakeholders</h4>
+                    <ul>
+                        <li><a href="#">For Government</a></li>
+                        <li><a href="#">API Documentation</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Head Office</h4>
+                    <p><i class="fas fa-location-dot"></i> Tech Park, Peelamedu, Coimbatore</p>
+                    <p><i class="fas fa-headset"></i> Helpline: 1913 Toll-Free</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2026 SmartCity Hub. An Initiative by Ministry of Housing & Urban Affairs.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

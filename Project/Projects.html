@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart City Projects | SmartCity Hub</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* PROJECTS PANEL SPECIFIC STYLES */
+        .project-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .metric-mini-card {
+            background: var(--white);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: var(--card-shadow);
+            border-left: 4px solid var(--primary-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .metric-mini-card i {
+            font-size: 1.8rem;
+            color: var(--secondary-color);
+        }
+
+        .filter-toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 35px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: #ffffff;
+            padding: 8px 18px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            border: 1px solid #e2e8f0;
+            cursor: pointer;
+            transition: var(--transition-fast);
+            color: var(--text-muted);
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--primary-color);
+            color: var(--white);
+            border-color: var(--primary-color);
+        }
+
+        /* Progress Bars */
+        .progress-box {
+            margin: 20px 0 15px 0;
+        }
+
+        .progress-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .progress-track {
+            background: #e2e8f0;
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            height: 100%;
+            border-radius: 4px;
+        }
+
+        /* Badges */
+        .status-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .badge-active { background: rgba(0, 102, 204, 0.1); color: var(--primary-color); }
+        .badge-planning { background: rgba(100, 116, 139, 0.1); color: var(--text-muted); }
+        .badge-done { background: rgba(34, 197, 94, 0.1); color: #22c55e; }
+
+        .project-meta-footer {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            border-top: 1px solid #f1f5f9;
+            padding-top: 15px;
+            margin-top: 15px;
+        }
+
+        .project-meta-footer span i {
+            margin-right: 6px;
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+<body style="background-color: var(--light-bg);">
+
+    <!-- HEADER -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo"><i class="fas fa-city"></i> SmartCity Hub</div>
+                <ul class="nav-links">
+                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="./solution.html">Solutions</a></li>
+                    <li><a href="./dashboard.html">Dashboard</a></li>
+                    <li><a href="./services.html">Citizen Services</a></li>
+                    <li><a href="./projects.html" style="color: var(--secondary-color); font-weight: 700;">Projects</a></li>
+                    <li><a href="login" class="btn-login">Admin Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- BREADCRUMB HERO -->
+    <section class="hero solutions-hero" style="padding: 80px 0 !important;">
+        <div class="container">
+            <h1>Urban Projects Registry</h1>
+            <p>Real-time lifecycle tracking, capital investments, and deployment milestones of ongoing municipal works.</p>
+        </div>
+    </section>
+
+    <!-- SUMMARY METRICS PANEL -->
+    <section style="padding: 40px 0 20px 0;">
+        <div class="container">
+            <div class="project-metrics">
+                <div class="metric-mini-card">
+                    <div>
+                        <span style="color: var(--text-muted); font-size: 0.85rem; font-weight: 600; display:block;">Monitored Projects</span>
+                        <span style="font-size: 1.75rem; font-weight:700; color:var(--dark-bg);">42 Active</span>
+                    </div>
+                    <i class="fas fa-folder-tree"></i>
+                </div>
+                <div class="metric-mini-card" style="border-left-color: #22c55e;">
+                    <div>
+                        <span style="color: var(--text-muted); font-size: 0.85rem; font-weight: 600; display:block;">Allocated Capital</span>
+                        <span style="font-size: 1.75rem; font-weight:700; color:var(--dark-bg);">$184.5M</span>
+                    </div>
+                    <i class="fas fa-coins"></i>
+                </div>
+                <div class="metric-mini-card" style="border-left-color: var(--secondary-color);">
+                    <div>
+                        <span style="color: var(--text-muted); font-size: 0.85rem; font-weight: 600; display:block;">Completed (FY 2026)</span>
+                        <span style="font-size: 1.75rem; font-weight:700; color:var(--dark-bg);">18 Initiatives</span>
+                    </div>
+                    <i class="fas fa-circle-check"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REGISTRY MATRIX GRID -->
+    <section style="padding: 20px 0 80px 0;">
+        <div class="container">
+            
+            <!-- Dynamic Filters -->
+            <div class="filter-toolbar">
+                <div class="filter-buttons">
+                    <button class="filter-btn active">All Systems</button>
+                    <button class="filter-btn">Mobility & Transit</button>
+                    <button class="filter-btn">Grid & Energy</button>
+                    <button class="filter-btn">Environment</button>
+                    <button class="filter-btn">Civic Infra</button>
+                </div>
+                <div>
+                    <select style="padding: 8px 12px; border-radius: 6px; border: 1px solid #e2e8f0; font-size: 0.85rem; color: var(--text-main); font-weight:600; outline:none;">
+                        <option>Sort By: Progress Percentage</option>
+                        <option>Sort By: Capital Investment</option>
+                        <option>Sort By: Estimated Target</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- PROJECTS CARD GRID -->
+            <div class="project-grid">
+
+                <!-- Project Item 1 -->
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5" alt="Subway and rail infrastructure expansion under layout">
+                    <div>
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+                            <span class="status-badge badge-active">In Execution</span>
+                            <span style="font-size:0.75rem; font-weight:700; color:var(--primary-color);">MOBILITY</span>
+                        </div>
+                        <h4 style="font-size:1.25rem; margin-bottom:10px; color:var(--dark-bg);">Coimbatore Intelligent BRT Corridor</h4>
+                        <p style="font-size:0.9rem; color:var(--text-muted);">Integrating rapid transit bus channels with computerized adaptive signaling priorities to shave 28% off peak travel times.</p>
+                        
+                        <div class="progress-box">
+                            <div class="progress-labels">
+                                <span>Phase 2 Signal Integration</span>
+                                <span>68% Complete</span>
+                            </div>
+                            <div class="progress-track">
+                                <div class="progress-bar" style="width: 68%;"></div>
+                            </div>
+                        </div>
+
+                        <div class="project-meta-footer">
+                            <span><i class="fas fa-wallet"></i> Budget: <strong>$45.2M</strong></span>
+                            <span><i class="fas fa-calendar-days"></i> Target: <strong>Dec 2026</strong></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Item 2 -->
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276" alt="Solar grid arrays close up view">
+                    <div>
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+                            <span class="status-badge badge-active">In Execution</span>
+                            <span style="font-size:0.75rem; font-weight:700; color:var(--primary-color);">GRID & ENERGY</span>
+                        </div>
+                        <h4 style="font-size:1.25rem; margin-bottom:10px; color:var(--dark-bg);">Distributed Roof Solar Matrix</h4>
+                        <p style="font-size:0.9rem; color:var(--text-muted);">Mounting networked photovoltaic arrays on municipal administration centers to supply 14MW directly into microgrid nodes.</p>
+                        
+                        <div class="progress-box">
+                            <div class="progress-labels">
+                                <span>Inverter Synchronization</span>
+                                <span>85% Complete</span>
+                            </div>
+                            <div class="progress-track">
+                                <div class="progress-bar" style="width: 85%;"></div>
+                            </div>
+                        </div>
+
+                        <div class="project-meta-footer">
+                            <span><i class="fas fa-wallet"></i> Budget: <strong>$18.0M</strong></span>
+                            <span><i class="fas fa-calendar-days"></i> Target: <strong>Aug 2026</strong></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Item 3 -->
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab" alt="Modern city center architecture layout representation">
+                    <div>
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+                            <span class="status-badge badge-planning">Planning Phase</span>
+                            <span style="font-size:0.75rem; font-weight:700; color:var(--primary-color);">CIVIC INFRA</span>
+                        </div>
+                        <h4 style="font-size:1.25rem; margin-bottom:10px; color:var(--dark-bg);">Command Core Ecosystem Upgrade</h4>
+                        <p style="font-size:0.9rem; color:var(--text-muted);">Re-architecting ICCC data processing backend with neural edge computation maps to automate high-density incident responses.</p>
+                        
+                        <div class="progress-box">
+                            <div class="progress-labels">
+                                <span>RFP & Vendor Evaluation</span>
+                                <span>12% Complete</span>
+                            </div>
+                            <div class="progress-track">
+                                <div class="progress-bar" style="width: 12%;"></div>
+                            </div>
+                        </div>
+
+                        <div class="project-meta-footer">
+                            <span><i class="fas fa-wallet"></i> Budget: <strong>$29.5M</strong></span>
+                            <span><i class="fas fa-calendar-days"></i> Target: <strong>Jun 2027</strong></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Item 4 -->
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1473968512647-3e447244af8f" alt="Smart lighting infrastructure arrays lined up">
+                    <div>
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+                            <span class="status-badge badge-done">Completed</span>
+                            <span style="font-size:0.75rem; font-weight:700; color:var(--primary-color);">GRID & ENERGY</span>
+                        </div>
+                        <h4 style="font-size:1.25rem; margin-bottom:10px; color:var(--dark-bg);">IoT Intelligent LED Lighting Mesh</h4>
+                        <p style="font-size:0.9rem; color:var(--text-muted);">Replaced standard configurations with 14,000 automated dimming fixtures featuring built-in micro air quality monitors.</p>
+                        
+                        <div class="progress-box">
+                            <div class="progress-labels">
+                                <span>Handed Over To Operations</span>
+                                <span>100% Complete</span>
+                            </div>
+                            <div class="progress-track">
+                                <div class="progress-bar" style="width: 100%; background: #22c55e;"></div>
+                            </div>
+                        </div>
+
+                        <div class="project-meta-footer">
+                            <span><i class="fas fa-wallet"></i> Budget: <strong>$12.4M</strong></span>
+                            <span><i class="fas fa-calendar-days"></i> Ended: <strong>Mar 2026</strong></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Item 5 -->
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1447752875215-b2761acb3c5d" alt="Eco corridor park wetlands protection lines">
+                    <div>
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+                            <span class="status-badge badge-active">In Execution</span>
+                            <span style="font-size:0.75rem; font-weight:700; color:var(--primary-color);">ENVIRONMENT</span>
+                        </div>
+                        <h4 style="font-size:1.25rem; margin-bottom:10px; color:var(--dark-bg);">Urban Eco-Corridor Basin Restoration</h4>
+                        <p style="font-size:0.9rem; color:var(--text-muted);">Re-engineering wetlands with natural bioswales, runoff buffer channels, and smart telemetry to monitor water parameters.</p>
+                        
+                        <div class="progress-box">
+                            <div class="progress-labels">
+                                <span>Dredging & Earthworks</span>
+                                <span>45% Complete</span>
+                            </div>
+                            <div class="progress-track">
+                                <div class="progress-bar" style="width: 45%;"></div>
+                            </div>
+                        </div>
+
+                        <div class="project-meta-footer">
+                            <span><i class="fas fa-wallet"></i> Budget: <strong>$22.1M</strong></span>
+                            <span><i class="fas fa-calendar-days"></i> Target: <strong>Mar 2027</strong></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Item 6 -->
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1558441719-ff34b0524a24" alt="Water pressure telemetry and purification pipes">
+                    <div>
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+                            <span class="status-badge badge-planning">Planning Phase</span>
+                            <span style="font-size:0.75rem; font-weight:700; color:var(--primary-color);">CIVIC INFRA</span>
+                        </div>
+                        <h4 style="font-size:1.25rem; margin-bottom:10px; color:var(--dark-bg);">Acoustic Leak Detection Arrays</h4>
+                        <p style="font-size:0.9rem; color:var(--text-muted);">Deploying subsurface sonic tracking nodes into trunk channels to flag minor distribution drops before burst events.</p>
+                        
+                        <div class="progress-box">
+                            <div class="progress-labels">
+                                <span>Hydrological Evaluation Map</span>
+                                <span>5% Complete</span>
+                            </div>
+                            <div class="progress-track">
+                                <div class="progress-bar" style="width: 5%;"></div>
+                            </div>
+                        </div>
+
+                        <div class="project-meta-footer">
+                            <span><i class="fas fa-wallet"></i> Budget: <strong>$7.8M</strong></span>
+                            <span><i class="fas fa-calendar-days"></i> Target: <strong>Oct 2027</strong></span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h4><i class="fas fa-city"></i> SmartCity Hub</h4>
+                    <p>SmartCity Hub is an end-to-end smart city management platform enabling data-driven governance. ISO 27001 certified.</p>
+                </div>
+                <div>
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="./solution.html">Solutions</a></li>
+                        <li><a href="./dashboard.html">Live Dashboard</a></li>
+                        <li><a href="./services.html">Citizen Services</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>For Stakeholders</h4>
+                    <ul>
+                        <li><a href="#">Tender Bulletins</a></li>
+                        <li><a href="#">Contractor Logins</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Head Office</h4>
+                    <p><i class="fas fa-location-dot"></i> Tech Park, Peelamedu, Coimbatore</p>
+                    <p><i class="fas fa-headset"></i> Helpline: 1913 Toll-Free</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2026 SmartCity Hub. An Initiative by Ministry of Housing & Urban Affairs.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
